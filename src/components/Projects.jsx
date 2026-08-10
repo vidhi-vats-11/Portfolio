@@ -1,3 +1,5 @@
+import Reveal from './Reveal'
+
 const projects = [
   {
     id: 1,
@@ -26,10 +28,10 @@ export default function Projects() {
   return (
     <section id="projects" className="projects">
       <div className="container">
-        <h2>Featured Projects</h2>
+        <Reveal as="h2">Featured Projects</Reveal>
         <div className="projects-grid">
-          {projects.map(project => (
-            <div key={project.id} className="project-card">
+          {projects.map((project, idx) => (
+            <Reveal key={project.id} delay={idx * 120} className="project-card">
               <h3>{project.title}</h3>
               <p>{project.description}</p>
               <div className="tags">
@@ -38,7 +40,7 @@ export default function Projects() {
                 ))}
               </div>
               <a href={project.link} className="project-link">View Project →</a>
-            </div>
+            </Reveal>
           ))}
         </div>
       </div>

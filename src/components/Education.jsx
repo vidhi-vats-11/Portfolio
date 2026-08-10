@@ -1,3 +1,5 @@
+import Reveal from './Reveal'
+
 const education = [
   {
     id: 1,
@@ -31,14 +33,14 @@ export default function Education() {
   return (
     <section id="education" className="education">
       <div className="container">
-        <h2>Education & Certifications</h2>
+        <Reveal as="h2">Education &amp; Certifications</Reveal>
 
         <div className="education-content">
           <div className="education-section">
-            <h3>Education</h3>
+            <Reveal as="h3">Education</Reveal>
             <div className="education-list">
-              {education.map(edu => (
-                <div key={edu.id} className="education-item">
+              {education.map((edu, idx) => (
+                <Reveal key={edu.id} delay={idx * 120} className="education-item">
                   <div className="edu-header">
                     <div>
                       <h4>{edu.degree}</h4>
@@ -48,21 +50,21 @@ export default function Education() {
                   </div>
                   <p className="details">{edu.details}</p>
                   <span className="status">{edu.status}</span>
-                </div>
+                </Reveal>
               ))}
             </div>
           </div>
 
           <div className="certification-section">
-            <h3>Certifications</h3>
+            <Reveal as="h3" delay={100}>Certifications</Reveal>
             <div className="certification-list">
-              {certifications.map(cert => (
-                <div key={cert.id} className="certification-item">
+              {certifications.map((cert, idx) => (
+                <Reveal key={cert.id} delay={100 + idx * 120} className="certification-item">
                   <h4>{cert.title}</h4>
                   <p className="issuer">{cert.issuer}</p>
                   <p className="instructors">Instructors: {cert.instructors}</p>
                   <p className="topics">{cert.topics}</p>
-                </div>
+                </Reveal>
               ))}
             </div>
           </div>

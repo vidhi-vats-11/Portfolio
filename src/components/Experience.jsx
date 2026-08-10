@@ -1,3 +1,5 @@
+import Reveal from './Reveal'
+
 const experiences = [
   {
     id: 1,
@@ -22,10 +24,10 @@ export default function Experience() {
   return (
     <section id="experience" className="experience">
       <div className="container">
-        <h2>Professional Experience</h2>
+        <Reveal as="h2">Professional Experience</Reveal>
         <div className="experience-list">
-          {experiences.map(exp => (
-            <div key={exp.id} className="experience-item">
+          {experiences.map((exp, idx) => (
+            <Reveal key={exp.id} delay={idx * 120} className="experience-item">
               <div className="exp-header">
                 <div>
                   <h3>{exp.position}</h3>
@@ -34,8 +36,8 @@ export default function Experience() {
                 <span className="period">{exp.period}</span>
               </div>
               <ul className="responsibilities">
-                {exp.responsibilities.map((resp, idx) => (
-                  <li key={idx}>{resp}</li>
+                {exp.responsibilities.map((resp, ridx) => (
+                  <li key={ridx} style={{ transitionDelay: `${ridx * 60}ms` }}>{resp}</li>
                 ))}
               </ul>
               <div className="technologies">
@@ -43,7 +45,7 @@ export default function Experience() {
                   <span key={tech} className="tech-badge">{tech}</span>
                 ))}
               </div>
-            </div>
+            </Reveal>
           ))}
         </div>
       </div>

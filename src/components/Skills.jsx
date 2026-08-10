@@ -1,3 +1,5 @@
+import Reveal from './Reveal'
+
 const skills = {
   'Languages': ['Python', 'C++', 'JavaScript', 'TypeScript'],
   'Backend': ['Django', 'Node.js', 'Express.js', 'Nest.js', 'Flask', 'REST APIs'],
@@ -12,17 +14,17 @@ export default function Skills() {
   return (
     <section id="skills" className="skills">
       <div className="container">
-        <h2>Skills & Technologies</h2>
+        <Reveal as="h2">Skills &amp; Technologies</Reveal>
         <div className="skills-grid">
-          {Object.entries(skills).map(([category, items]) => (
-            <div key={category} className="skill-category">
+          {Object.entries(skills).map(([category, items], idx) => (
+            <Reveal key={category} delay={idx * 90} className="skill-category">
               <h3>{category}</h3>
               <ul>
-                {items.map(item => (
-                  <li key={item}>{item}</li>
+                {items.map((item, itemIdx) => (
+                  <li key={item} style={{ transitionDelay: `${idx * 90 + itemIdx * 40}ms` }}>{item}</li>
                 ))}
               </ul>
-            </div>
+            </Reveal>
           ))}
         </div>
       </div>
