@@ -71,7 +71,48 @@ const profile = {
       issuer: 'Udemy (Hitesh Choudhary & Piyush Garg)',
       topics: 'LLMs, AI agents, RAG, and automation pipelines with hands-on projects'
     }
-  ]
+  ],
+  personal: {
+    dob: '11 October',
+    gender: 'Female',
+    hometown: 'Meerut, Uttar Pradesh, India'
+  },
+  schooling: [
+    {
+      level: '12th',
+      school: 'K.L. International School',
+      website: 'https://www.klischool.com/',
+      marks: '80%',
+      subjects: ['Physics', 'Chemistry', 'Maths', 'English'],
+      optionalSubject: 'Fine Arts'
+    },
+    {
+      level: '10th',
+      school: 'J.P Academy',
+      website: 'https://jpacademy.in/',
+      marks: '86.62%',
+      subjects: ['Hindi', 'English', 'Maths', 'Science', 'SST', 'IT']
+    }
+  ],
+  higherEducation: {
+    graduation: {
+      degree: 'B.Tech, Electrical Engineering',
+      institution: 'Shri Mata Vaishno Devi University',
+      period: 'Jul 2021 – May 2025',
+      email: '21bee079@smvdu.ac.in'
+    },
+    postGraduation: {
+      degree: 'M.Tech, Computer Science & Engineering',
+      institution: 'IIT Patna',
+      period: '2026 – 2028 (Pursuing)',
+      email: 'vidhi_pa2602mth181@iitp.ac.in'
+    }
+  },
+  family: {
+    father: 'Mr. Umesh Kumar Sharma',
+    mother: 'Seema Sharma',
+    siblings: 'One brother'
+  }
 }
 
 export default profile

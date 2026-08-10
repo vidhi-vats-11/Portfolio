@@ -1,11 +1,20 @@
 import ScrollProgress from './ScrollProgress'
+import profilePhoto from '../assets/profile.jpg'
 
 export default function Header() {
   return (
     <header className="header">
       <ScrollProgress />
       <nav className="nav">
-        <div className="logo">Vidhi Vats</div>
+        <div className="logo">
+          <div
+            className="logo-photo"
+            style={{ backgroundImage: `url(${profilePhoto})` }}
+            role="img"
+            aria-label="Vidhi Vats"
+          />
+          Vidhi Vats
+        </div>
         <ul className="nav-links">
           <li><a href="#home"><span>Home</span></a></li>
           <li><a href="#experience"><span>Experience</span></a></li>

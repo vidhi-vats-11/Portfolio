@@ -14,6 +14,7 @@ export default function Hero() {
         <div className="cta-buttons hero-in hero-in-5">
           <a href="#projects" className="btn btn-primary btn-shine">View My Projects</a>
           <a href="#contact" className="btn btn-secondary">Get In Touch</a>
+          <a href="/resume.pdf" className="btn btn-secondary" download>Download Resume</a>
         </div>
       </div>
       <a href="#experience" className="scroll-cue" aria-label="Scroll down">

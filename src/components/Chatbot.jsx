@@ -4,9 +4,21 @@ import '../styles/Chatbot.css'
 
 const GREETING = "Hi! I'm Vidhi's portfolio assistant. Ask me anything about her skills, experience, projects, education, or how to get in touch — or tap a suggestion below."
 
+const URL_PATTERN = /(https?:\/\/[^\s)]+)/g
+
+function renderLineWithLinks(line, keyPrefix) {
+  // split() with a capturing group returns [text, url, text, url, ...] — odd indices are the captured URLs
+  const parts = line.split(URL_PATTERN)
+  return parts.map((part, i) =>
+    i % 2 === 1
+      ? <a key={`${keyPrefix}-${i}`} href={part} target="_blank" rel="noopener noreferrer" className="chatbot-link">{part}</a>
+      : <span key={`${keyPrefix}-${i}`}>{part}</span>
+  )
+}
+
 export default function Chatbot() {
   const [isOpen, setIsOpen] = useState(false)
-  const [messages, setMessages] = useState([{ role: 'bot', text: GREETING }])
+  const [messages, setMessages] = useState([{ role: 'bot', text: GREETING, actions: [] }])
   const [input, setInput] = useState('')
   const [isTyping, setIsTyping] = useState(false)
   const listRef = useRef(null)
@@ -28,7 +40,7 @@ export default function Chatbot() {
     const delay = 400 + Math.min(trimmed.length * 15, 600)
     setTimeout(() => {
       const reply = getBotResponse(trimmed)
-      setMessages(prev => [...prev, { role: 'bot', text: reply }])
+      setMessages(prev => [...prev, { role: 'bot', text: reply.text, actions: reply.actions || [] }])
       setIsTyping(false)
     }, delay)
   }
@@ -56,12 +68,28 @@ export default function Chatbot() {
             {messages.map((msg, idx) => (
               <div key={idx} className={`chatbot-bubble-row ${msg.role}`}>
                 <div className="chatbot-bubble">
-                  {msg.text.split('\n').map((line, i) => (
+                  {msg.text.split('\n').map((line, i, arr) => (
                     <span key={i}>
-                      {line}
-                      {i < msg.text.split('\n').length - 1 && <br />}
+                      {renderLineWithLinks(line, i)}
+                      {i < arr.length - 1 && <br />}
                     </span>
                   ))}
+                  {msg.actions && msg.actions.length > 0 && (
+                    <div className="chatbot-actions">
+                      {msg.actions.map(action => (
+                        <a
+                          key={action.label}
+                          href={action.href}
+                          className="chatbot-action-btn"
+                          target={action.download ? undefined : '_blank'}
+                          rel={action.download ? undefined : 'noopener noreferrer'}
+                          download={action.download || undefined}
+                        >
+                          {action.label}
+                        </a>
+                      ))}
+                    </div>
+                  )}
                 </div>
               </div>
             ))}

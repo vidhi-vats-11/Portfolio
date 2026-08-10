@@ -59,10 +59,88 @@ const topics = [
     }
   },
   {
-    id: 'education',
-    keywords: ['education', 'degree', 'degrees', 'study', 'studies', 'college', 'university', 'iit', 'b.tech', 'm.tech', 'academic'],
+    id: 'marks',
+    keywords: ['marks', 'percentage', 'score', 'grades'],
+    respond: (input) => {
+      const s10 = profile.schooling.find(sc => sc.level === '10th')
+      const s12 = profile.schooling.find(sc => sc.level === '12th')
+      const is10 = /\b(10th|tenth|10)\b/.test(input)
+      const is12 = /\b(12th|twelfth|xii|12)\b/.test(input)
+      if (is10 && !is12) return `Marks in 10th: ${s10.marks}`
+      if (is12 && !is10) return `Marks in 12th: ${s12.marks}`
+      return `Marks:\n• 10th: ${s10.marks}\n• 12th: ${s12.marks}`
+    }
+  },
+  {
+    id: 'school-12th',
+    keywords: ['12th', 'twelfth', 'xii', 'intermediate', '12', 'k.l. international', 'kl international', 'klischool'],
+    respond: () => {
+      const s = profile.schooling.find(sc => sc.level === '12th')
+      return `12th details:\nSchool: ${s.school}\nWebsite: ${s.website}\nMarks: ${s.marks}\nSubjects: ${s.subjects.join(', ')}\nOptional: ${s.optionalSubject}`
+    }
+  },
+  {
+    id: 'school-10th',
+    keywords: ['10th', 'tenth', '10', 'x board', 'j.p academy', 'jp academy', 'jpacademy'],
+    respond: () => {
+      const s = profile.schooling.find(sc => sc.level === '10th')
+      return `10th details:\nSchool: ${s.school}\nWebsite: ${s.website}\nMarks: ${s.marks}\nSubjects: ${s.subjects.join(', ')}`
+    }
+  },
+  {
+    id: 'schooling',
+    keywords: ['school', 'schooling'],
     respond: () =>
-      `Education:\n${profile.education.map(e => `• ${e.degree} — ${e.institution} (${e.period})`).join('\n')}`
+      `Schooling:\n${profile.schooling.map(s => `• ${s.level} — ${s.school} (${s.website})`).join('\n')}\nAsk about "10th" or "12th" for more detail.`
+  },
+  {
+    id: 'graduation',
+    keywords: ['graduation', 'b.tech', 'undergraduate', 'bachelor', 'smvdu', 'electrical engineering'],
+    respond: () => {
+      const g = profile.higherEducation.graduation
+      return `Graduation details:\nDegree: ${g.degree}\nInstitution: ${g.institution}\nPeriod: ${g.period}\nEmail: ${g.email}`
+    }
+  },
+  {
+    id: 'postgraduation',
+    keywords: ['postgraduation', 'post-graduation', 'post graduation', 'm.tech', 'masters', "master's", 'iit patna', 'iit', 'pursuing'],
+    respond: () => {
+      const p = profile.higherEducation.postGraduation
+      return `Post-graduation details:\nDegree: ${p.degree}\nInstitution: ${p.institution}\nPeriod: ${p.period}\nEmail: ${p.email}`
+    }
+  },
+  {
+    id: 'education',
+    keywords: ['education', 'degree', 'degrees', 'study', 'studies', 'college', 'university', 'academic', 'qualification', 'qualifications'],
+    respond: () =>
+      `Education:\n${profile.education.map(e => `• ${e.degree} — ${e.institution} (${e.period})`).join('\n')}\nAsk about "graduation" or "post-graduation" for more detail.`
+  },
+  {
+    id: 'family',
+    keywords: ['father', 'mother', 'parents', 'family', 'siblings', 'brother'],
+    respond: () =>
+      `Family:\n• Father: ${profile.family.father}\n• Mother: ${profile.family.mother}\n• Siblings: ${profile.family.siblings}`
+  },
+  {
+    id: 'dob',
+    keywords: ['dob', 'date of birth', 'birthday', 'born'],
+    respond: () => `Her date of birth is ${profile.personal.dob}.`
+  },
+  {
+    id: 'gender',
+    keywords: ['gender', 'sex'],
+    respond: () => `${profile.personal.gender}.`
+  },
+  {
+    id: 'resume',
+    keywords: ['resume', 'cv'],
+    respond: () => ({
+      text: "Here's her resume — you can download it or view it directly:",
+      actions: [
+        { label: 'Download Resume', href: '/resume.pdf', download: true },
+        { label: 'View Resume', href: '/resume.pdf', download: false }
+      ]
+    })
   },
   {
     id: 'certifications',
@@ -80,7 +158,7 @@ const topics = [
   },
   {
     id: 'location',
-    keywords: ['where is she', 'location', 'based in', 'live in', 'city'],
+    keywords: ['where is she', 'location', 'based in', 'live in', 'city', 'hometown', 'home town'],
     respond: () => `She's based in ${profile.location}.`
   }
 ]
@@ -98,16 +176,17 @@ export function getBotResponse(rawInput) {
   const input = rawInput.toLowerCase().trim()
 
   if (!input) {
-    return "I didn't catch that — could you rephrase?"
+    return { text: "I didn't catch that — could you rephrase?" }
   }
 
   for (const topic of topics) {
     if (topic.keywords.some(kw => matchesKeyword(input, kw))) {
-      return topic.respond()
+      const result = topic.respond(input)
+      return typeof result === 'string' ? { text: result } : result
     }
   }
 
-  return `I don't have specifics on that yet. You can ask about her skills, experience, projects, education, or contact details — or reach out directly at ${profile.email}.`
+  return { text: "I don't have specifics on that yet — please rewrite it more clearly, or ask about her skills, experience, projects, education, or contact details." }
 }
 
 export const suggestedQuestions = [

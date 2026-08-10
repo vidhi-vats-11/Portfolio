@@ -11,7 +11,8 @@ const education = [
     period: '2026 – 2028',
     status: 'Pursuing',
     details: 'Postgraduate program in CSE with focus on distributed systems and AI.',
-    logo: iitPatnaLogo
+    logo: iitPatnaLogo,
+    website: 'https://www.iitp.ac.in/'
   },
   {
     id: 2,
@@ -20,7 +21,8 @@ const education = [
     period: 'Jul 2021 – May 2025',
     status: 'Completed',
     details: 'Undergraduate degree in Electrical Engineering with coursework in software development and system design.',
-    logo: smvduLogo
+    logo: smvduLogo,
+    website: 'https://smvdu.ac.in/'
   }
 ]
 
@@ -30,7 +32,8 @@ const certifications = [
     title: 'Full Stack Generative & Agentic AI with Python',
     issuer: 'Udemy',
     instructors: 'Hitesh Choudhary & Piyush Garg',
-    topics: 'LLMs, AI agents, RAG, and automation pipelines with hands-on projects'
+    topics: 'LLMs, AI agents, RAG, and automation pipelines with hands-on projects',
+    url: 'https://www.udemy.com/certificate/UC-848d0f89-ec98-474e-8886-acc5b7690c36/'
   }
 ]
 
@@ -49,7 +52,9 @@ export default function Education() {
                 <Reveal key={edu.id} delay={idx * 120} className="education-item">
                   <div className="edu-header">
                     <div className="edu-header-main">
-                      <img src={edu.logo} alt={`${edu.institution} logo`} className="edu-logo" />
+                      <a href={edu.website} target="_blank" rel="noopener noreferrer" aria-label={`Visit ${edu.institution} website`}>
+                        <img src={edu.logo} alt={`${edu.institution} logo`} className="edu-logo" />
+                      </a>
                       <div>
                         <h4>{edu.degree}</h4>
                         <p className="institution">{edu.institution}</p>
@@ -73,6 +78,7 @@ export default function Education() {
                   <p className="issuer">{cert.issuer}</p>
                   <p className="instructors">Instructors: {cert.instructors}</p>
                   <p className="topics">{cert.topics}</p>
+                  <a href={cert.url} target="_blank" rel="noopener noreferrer" className="btn btn-secondary cert-btn">View Certificate</a>
                 </Reveal>
               ))}
             </div>

@@ -169,6 +169,41 @@
   30% { transform: translateY(-4px); opacity: 1; }
 }
 
+.chatbot-link {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  word-break: break-all;
+}
+
+.chatbot-bubble-row.bot .chatbot-link {
+  color: var(--primary);
+}
+
+.chatbot-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.65rem;
+}
+
+.chatbot-action-btn {
+  display: inline-block;
+  background: var(--primary);
+  color: white;
+  border-radius: 999px;
+  padding: 0.4rem 0.9rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.chatbot-action-btn:hover {
+  transform: translateY(-1px);
+  opacity: 0.9;
+}
+
 .chatbot-suggestions {
   display: flex;
   flex-wrap: wrap;
