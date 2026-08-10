@@ -1,5 +1,7 @@
 import Reveal from './Reveal'
 import SectionBackground from './SectionBackground'
+import iitPatnaLogo from '../assets/logos/iitpatna.png'
+import smvduLogo from '../assets/logos/smvdu.jpg'
 
 const education = [
   {
@@ -8,7 +10,8 @@ const education = [
     institution: 'IIT Patna',
     period: '2026 – 2028',
     status: 'Pursuing',
-    details: 'Postgraduate program in CSE with focus on distributed systems and AI.'
+    details: 'Postgraduate program in CSE with focus on distributed systems and AI.',
+    logo: iitPatnaLogo
   },
   {
     id: 2,
@@ -16,7 +19,8 @@ const education = [
     institution: 'Shri Mata Vaishno Devi University',
     period: 'Jul 2021 – May 2025',
     status: 'Completed',
-    details: 'Undergraduate degree in Electrical Engineering with coursework in software development and system design.'
+    details: 'Undergraduate degree in Electrical Engineering with coursework in software development and system design.',
+    logo: smvduLogo
   }
 ]
 
@@ -44,9 +48,12 @@ export default function Education() {
               {education.map((edu, idx) => (
                 <Reveal key={edu.id} delay={idx * 120} className="education-item">
                   <div className="edu-header">
-                    <div>
-                      <h4>{edu.degree}</h4>
-                      <p className="institution">{edu.institution}</p>
+                    <div className="edu-header-main">
+                      <img src={edu.logo} alt={`${edu.institution} logo`} className="edu-logo" />
+                      <div>
+                        <h4>{edu.degree}</h4>
+                        <p className="institution">{edu.institution}</p>
+                      </div>
                     </div>
                     <span className="period">{edu.period}</span>
                   </div>
