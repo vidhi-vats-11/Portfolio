@@ -1,3 +1,5 @@
+import ThemeToggle from './ThemeToggle'
+
 export default function Header() {
   return (
     <header className="header">
@@ -11,6 +13,7 @@ export default function Header() {
           <li><a href="#education">Education</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
+        <ThemeToggle />
       </nav>
     </header>
   )

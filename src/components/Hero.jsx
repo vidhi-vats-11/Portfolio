@@ -1,6 +1,9 @@
+import HeroBackground from './HeroBackground'
+
 export default function Hero() {
   return (
     <section id="home" className="hero">
+      <HeroBackground />
       <div className="hero-content">
         <h1>Hi, I'm Vidhi Vats</h1>
         <p className="role">Software Development Engineer | Backend & Full-Stack | AI-Powered Systems</p>

@@ -1,3 +1,4 @@
+import { ThemeProvider } from './ThemeContext'
 import Header from './components/Header'
 import Hero from './components/Hero'
 import Experience from './components/Experience'
@@ -10,7 +11,7 @@ import './App.css'
 
 function App() {
   return (
-    <>
+    <ThemeProvider>
       <Header />
       <main>
         <Hero />
@@ -21,7 +22,7 @@ function App() {
         <Contact />
       </main>
       <Footer />
-    </>
+    </ThemeProvider>
   )
 }
 
