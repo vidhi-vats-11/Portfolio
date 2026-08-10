@@ -64,20 +64,20 @@ function CircuitPattern() {
   )
 }
 
-/* Projects: floating code brackets / terminal window */
+/* Projects: floating code brackets / terminal window (teal/cyan accent) */
 function CodePattern() {
   return (
     <g fill="none">
-      <text x="80" y="140" fontFamily="ui-monospace, monospace" fontSize="90" fill="rgba(129, 140, 248, 0.15)" className="drift">{'</>'}</text>
-      <text x="1000" y="600" fontFamily="ui-monospace, monospace" fontSize="70" fill="rgba(129, 140, 248, 0.12)" className="drift" style={{ animationDelay: '1.2s' }}>{'{ }'}</text>
-      <rect x="880" y="60" width="220" height="150" rx="10" stroke="rgba(129, 140, 248, 0.3)" strokeWidth="2" className="pulse" />
-      <circle cx="900" cy="82" r="4" fill="rgba(129, 140, 248, 0.4)" />
-      <circle cx="915" cy="82" r="4" fill="rgba(129, 140, 248, 0.4)" />
-      <circle cx="930" cy="82" r="4" fill="rgba(129, 140, 248, 0.4)" />
-      <line x1="900" y1="105" x2="1050" y2="105" stroke="rgba(129, 140, 248, 0.25)" strokeWidth="2" />
-      <line x1="900" y1="125" x2="1020" y2="125" stroke="rgba(129, 140, 248, 0.2)" strokeWidth="2" />
-      <line x1="900" y1="145" x2="1060" y2="145" stroke="rgba(129, 140, 248, 0.2)" strokeWidth="2" />
-      <text x="60" y="560" fontFamily="ui-monospace, monospace" fontSize="14" fill="rgba(129, 140, 248, 0.3)">git commit -m "ship it"</text>
+      <text x="80" y="140" fontFamily="ui-monospace, monospace" fontSize="90" fill="rgba(45, 212, 191, 0.16)" className="drift">{'</>'}</text>
+      <text x="1000" y="600" fontFamily="ui-monospace, monospace" fontSize="70" fill="rgba(45, 212, 191, 0.13)" className="drift" style={{ animationDelay: '1.2s' }}>{'{ }'}</text>
+      <rect x="880" y="60" width="220" height="150" rx="10" stroke="rgba(45, 212, 191, 0.32)" strokeWidth="2" className="pulse" />
+      <circle cx="900" cy="82" r="4" fill="rgba(45, 212, 191, 0.45)" />
+      <circle cx="915" cy="82" r="4" fill="rgba(45, 212, 191, 0.45)" />
+      <circle cx="930" cy="82" r="4" fill="rgba(45, 212, 191, 0.45)" />
+      <line x1="900" y1="105" x2="1050" y2="105" stroke="rgba(45, 212, 191, 0.27)" strokeWidth="2" />
+      <line x1="900" y1="125" x2="1020" y2="125" stroke="rgba(45, 212, 191, 0.22)" strokeWidth="2" />
+      <line x1="900" y1="145" x2="1060" y2="145" stroke="rgba(45, 212, 191, 0.22)" strokeWidth="2" />
+      <text x="60" y="560" fontFamily="ui-monospace, monospace" fontSize="14" fill="rgba(45, 212, 191, 0.32)">git commit -m "ship it"</text>
     </g>
   )
 }
