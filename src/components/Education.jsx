@@ -1,6 +1,6 @@
 import Reveal from './Reveal'
 import SectionBackground from './SectionBackground'
-import iitPatnaLogo from '../assets/logos/iitpatna.png'
+import iitPatnaLogo from '../assets/logos/iitpatna.jpg'
 import smvduLogo from '../assets/logos/smvdu.jpg'
 
 const education = [
