@@ -1,13 +1,35 @@
+import { useState } from 'react'
+import emailjs from '@emailjs/browser'
 import Reveal from './Reveal'
 import SectionBackground from './SectionBackground'
 
+const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID
+const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID
+const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+const CONTACT_EMAIL = 'vidhii.vats@gmail.com'
+
 export default function Contact() {
-  const handleSubmit = (e) => {
+  const [status, setStatus] = useState('idle') // idle | sending | sent | error
+
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    const formData = new FormData(e.target)
-    const email = 'vidhii.vats@gmail.com'
-    const mailto = `mailto:${email}?subject=${encodeURIComponent(formData.get('subject'))}&body=${encodeURIComponent(formData.get('message'))}`
-    window.location.href = mailto
+
+    if (!SERVICE_ID || !TEMPLATE_ID || !PUBLIC_KEY) {
+      setStatus('error')
+      return
+    }
+
+    const form = e.target
+    setStatus('sending')
+
+    try {
+      await emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, form, { publicKey: PUBLIC_KEY })
+      setStatus('sent')
+      form.reset()
+    } catch (err) {
+      console.error('EmailJS error:', err)
+      setStatus('error')
+    }
   }
 
   return (
@@ -22,7 +44,7 @@ export default function Contact() {
             <h3>Contact Details</h3>
             <div className="info-item">
               <strong>Email:</strong>
-              <a href="mailto:vidhii.vats@gmail.com">vidhii.vats@gmail.com</a>
+              <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
             </div>
             <div className="info-item">
               <strong>Phone:</strong>
@@ -44,7 +66,19 @@ export default function Contact() {
               <input type="email" name="email" placeholder="Your Email" required />
               <input type="text" name="subject" placeholder="Subject" required />
               <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
-              <button type="submit" className="btn btn-primary btn-shine">Send Message</button>
+              <button type="submit" className="btn btn-primary btn-shine" disabled={status === 'sending'}>
+                {status === 'sending' ? 'Sending...' : 'Send Message'}
+              </button>
+
+              {status === 'sent' && (
+                <p className="form-status form-status-success">Message sent! I'll get back to you soon.</p>
+              )}
+              {status === 'error' && (
+                <p className="form-status form-status-error">
+                  Couldn't send that. Please email me directly at{' '}
+                  <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>.
+                </p>
+              )}
             </form>
           </Reveal>
         </div>
