@@ -1,24 +1,24 @@
 const projects = [
   {
     id: 1,
-    title: 'E-Commerce Platform',
-    description: 'A full-stack e-commerce solution with React frontend and Node.js backend',
-    tags: ['React', 'Node.js', 'MongoDB', 'Stripe'],
-    link: '#'
+    title: 'GenAI RAG Document Assistant',
+    description: 'Built a Retrieval-Augmented Generation chatbot that answers natural-language questions over a custom document corpus. Designed an ingestion pipeline that chunks documents, generates embeddings, and indexes them in a vector store for fast semantic retrieval. Implemented context-aware query handling with low-hallucination answers and source citations. Containerized with Docker and automated CI/CD with GitHub Actions.',
+    tags: ['Python', 'LangChain', 'OpenAI', 'Vector Stores', 'Docker', 'CI/CD', 'Firebase'],
+    link: 'https://github.com/vidhi-vats-11'
   },
   {
     id: 2,
-    title: 'Task Management App',
-    description: 'Collaborative task management tool with real-time updates',
-    tags: ['React', 'Firebase', 'Tailwind CSS'],
-    link: '#'
+    title: 'Real-Time Monitoring Dashboard',
+    description: 'Built an enterprise-grade real-time monitoring dashboard in React.js for a 12-node distributed sensor network. Designed scalable backend services with Django + MongoDB to ingest and process high-frequency data streams. Introduced Redis caching and RabbitMQ message queue to decouple ingestion from processing. Deployed on GCP with Docker for scalability.',
+    tags: ['React.js', 'Django', 'MongoDB', 'Redis', 'RabbitMQ', 'GCP', 'Docker', 'WebSocket'],
+    link: 'https://github.com/vidhi-vats-11'
   },
   {
     id: 3,
-    title: 'Weather Dashboard',
-    description: 'Beautiful weather app with forecasts and location search',
-    tags: ['React', 'API Integration', 'Charts'],
-    link: '#'
+    title: 'Network Vulnerability Scanner',
+    description: 'Built a full-stack security tool in React + Django to scan and analyze network vulnerabilities with real-time device discovery and scanning. Simulated real-world attacks (MITM, ARP spoofing, packet sniffing) and built Python brute-force modules for SSH/Telnet security testing. Optimized packet processing for real-time vulnerability detection.',
+    tags: ['React', 'Django', 'Python', 'Network Security', 'Real-Time'],
+    link: 'https://github.com/vidhi-vats-11'
   }
 ]
 
