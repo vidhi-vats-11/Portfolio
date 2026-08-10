@@ -1,4 +1,5 @@
 import Reveal from './Reveal'
+import SectionBackground from './SectionBackground'
 
 export default function Contact() {
   const handleSubmit = (e) => {
@@ -11,6 +12,7 @@ export default function Contact() {
 
   return (
     <section id="contact" className="contact">
+      <SectionBackground variant="signal" />
       <div className="container">
         <Reveal as="h2">Let's Connect</Reveal>
         <Reveal as="p" delay={80} className="contact-lead">Interested in collaborating? Feel free to reach out!</Reveal>

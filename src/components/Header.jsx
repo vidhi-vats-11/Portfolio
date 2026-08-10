@@ -1,4 +1,3 @@
-import ThemeToggle from './ThemeToggle'
 import ScrollProgress from './ScrollProgress'
 
 export default function Header() {
@@ -15,7 +14,6 @@ export default function Header() {
           <li><a href="#education"><span>Education</span></a></li>
           <li><a href="#contact"><span>Contact</span></a></li>
         </ul>
-        <ThemeToggle />
       </nav>
     </header>
   )

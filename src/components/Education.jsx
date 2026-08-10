@@ -1,4 +1,5 @@
 import Reveal from './Reveal'
+import SectionBackground from './SectionBackground'
 
 const education = [
   {
@@ -32,6 +33,7 @@ const certifications = [
 export default function Education() {
   return (
     <section id="education" className="education">
+      <SectionBackground variant="cap" />
       <div className="container">
         <Reveal as="h2">Education &amp; Certifications</Reveal>
 

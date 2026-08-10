@@ -1,4 +1,5 @@
 import Reveal from './Reveal'
+import SectionBackground from './SectionBackground'
 
 const experiences = [
   {
@@ -23,6 +24,7 @@ const experiences = [
 export default function Experience() {
   return (
     <section id="experience" className="experience">
+      <SectionBackground variant="circuit" />
       <div className="container">
         <Reveal as="h2">Professional Experience</Reveal>
         <div className="experience-list">

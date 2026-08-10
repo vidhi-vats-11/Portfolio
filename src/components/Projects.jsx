@@ -1,4 +1,5 @@
 import Reveal from './Reveal'
+import SectionBackground from './SectionBackground'
 
 const projects = [
   {
@@ -27,6 +28,7 @@ const projects = [
 export default function Projects() {
   return (
     <section id="projects" className="projects">
+      <SectionBackground variant="code" />
       <div className="container">
         <Reveal as="h2">Featured Projects</Reveal>
         <div className="projects-grid">

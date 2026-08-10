@@ -1,4 +1,5 @@
 import Reveal from './Reveal'
+import SectionBackground from './SectionBackground'
 
 const skills = {
   'Languages': ['Python', 'C++', 'JavaScript', 'TypeScript'],
@@ -13,6 +14,7 @@ const skills = {
 export default function Skills() {
   return (
     <section id="skills" className="skills">
+      <SectionBackground variant="hex" />
       <div className="container">
         <Reveal as="h2">Skills &amp; Technologies</Reveal>
         <div className="skills-grid">

@@ -1,6 +1,9 @@
+import SectionBackground from './SectionBackground'
+
 export default function Footer() {
   return (
     <footer className="footer">
+      <SectionBackground variant="binary" />
       <div className="container">
         <div className="footer-content">
           <div className="footer-section">
