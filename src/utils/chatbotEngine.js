@@ -3,7 +3,7 @@ import profile from '../data/profile'
 const topics = [
   {
     id: 'greeting',
-    keywords: ['hi', 'hello', 'hey', 'yo', 'sup', 'good morning', 'good evening'],
+    keywords: ['hi', 'hello', 'hey', 'sup', 'good morning', 'good evening'],
     respond: () =>
       `Hi! I'm ${profile.name}'s portfolio assistant. Ask me about her skills, experience, projects, education, or how to get in touch.`
   },
@@ -16,32 +16,6 @@ const topics = [
     id: 'summary',
     keywords: ['who are you', 'about vidhi', 'about you', 'tell me about', 'summary', 'introduce', 'who is vidhi'],
     respond: () => profile.summary
-  },
-  {
-    id: 'skills',
-    keywords: ['skill', 'tech stack', 'technolog', 'language', 'stack', 'tools', 'know how to', 'proficient'],
-    respond: () => {
-      const lines = Object.entries(profile.skills)
-        .map(([cat, items]) => `• ${cat}: ${items.join(', ')}`)
-        .join('\n')
-      return `Here's a breakdown of her technical skills:\n${lines}`
-    }
-  },
-  {
-    id: 'experience',
-    keywords: ['experience', 'work', 'job', 'intern', 'company', 'employer', 'career'],
-    respond: () => {
-      const exp = profile.experience[0]
-      return `${exp.role} at ${exp.company} (${exp.period}):\n${exp.highlights.slice(0, 4).map(h => `• ${h}`).join('\n')}\n...and more — check the Experience section for the full list.`
-    }
-  },
-  {
-    id: 'projects',
-    keywords: ['project', 'built', 'build', 'portfolio piece', 'genai', 'rag', 'scanner', 'dashboard'],
-    respond: () =>
-      `She's built a few notable projects:\n${profile.projects
-        .map(p => `• ${p.title} (${p.stack})`)
-        .join('\n')}\nWant details on any of them? Just ask by name.`
   },
   {
     id: 'project-rag',
@@ -59,14 +33,40 @@ const topics = [
     respond: () => profile.projects[2].description
   },
   {
+    id: 'projects',
+    keywords: ['project', 'projects', 'built', 'build', 'portfolio piece'],
+    respond: () =>
+      `She's built a few notable projects:\n${profile.projects
+        .map(p => `• ${p.title} (${p.stack})`)
+        .join('\n')}\nWant details on any of them? Just ask by name.`
+  },
+  {
+    id: 'skills',
+    keywords: ['skill', 'skills', 'tech stack', 'technology', 'technologies', 'language', 'languages', 'stack', 'tools', 'know how to', 'proficient'],
+    respond: () => {
+      const lines = Object.entries(profile.skills)
+        .map(([cat, items]) => `• ${cat}: ${items.join(', ')}`)
+        .join('\n')
+      return `Here's a breakdown of her technical skills:\n${lines}`
+    }
+  },
+  {
+    id: 'experience',
+    keywords: ['experience', 'work', 'job', 'intern', 'company', 'employer', 'career'],
+    respond: () => {
+      const exp = profile.experience[0]
+      return `${exp.role} at ${exp.company} (${exp.period}):\n${exp.highlights.slice(0, 4).map(h => `• ${h}`).join('\n')}\n...and more — check the Experience section for the full list.`
+    }
+  },
+  {
     id: 'education',
-    keywords: ['education', 'degree', 'study', 'college', 'university', 'iit', 'b.tech', 'm.tech', 'academic'],
+    keywords: ['education', 'degree', 'degrees', 'study', 'studies', 'college', 'university', 'iit', 'b.tech', 'm.tech', 'academic'],
     respond: () =>
       `Education:\n${profile.education.map(e => `• ${e.degree} — ${e.institution} (${e.period})`).join('\n')}`
   },
   {
     id: 'certifications',
-    keywords: ['certificat', 'course', 'udemy'],
+    keywords: ['certificate', 'certificates', 'certification', 'certifications', 'certified', 'course', 'courses', 'udemy'],
     respond: () =>
       `Certifications:\n${profile.certifications
         .map(c => `• ${c.title} — ${c.issuer}\n  Topics: ${c.topics}`)
@@ -85,6 +85,15 @@ const topics = [
   }
 ]
 
+function escapeRegex(str) {
+  return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+}
+
+function matchesKeyword(input, keyword) {
+  const pattern = new RegExp(`\\b${escapeRegex(keyword)}\\b`, 'i')
+  return pattern.test(input)
+}
+
 export function getBotResponse(rawInput) {
   const input = rawInput.toLowerCase().trim()
 
@@ -93,7 +102,7 @@ export function getBotResponse(rawInput) {
   }
 
   for (const topic of topics) {
-    if (topic.keywords.some(kw => input.includes(kw))) {
+    if (topic.keywords.some(kw => matchesKeyword(input, kw))) {
       return topic.respond()
     }
   }
