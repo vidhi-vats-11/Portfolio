@@ -20,17 +20,17 @@ const topics = [
   {
     id: 'project-rag',
     keywords: ['rag', 'genai', 'langchain', 'chatbot project', 'document assistant'],
-    respond: () => profile.projects[0].description
+    respond: () => formatProject(profile.projects[0])
   },
   {
     id: 'project-dashboard',
     keywords: ['monitoring dashboard', 'sensor network', 'real-time dashboard', 'dashboard project'],
-    respond: () => profile.projects[1].description
+    respond: () => formatProject(profile.projects[1])
   },
   {
     id: 'project-scanner',
     keywords: ['vulnerability', 'scanner', 'security tool', 'network security'],
-    respond: () => profile.projects[2].description
+    respond: () => formatProject(profile.projects[2])
   },
   {
     id: 'projects',
@@ -154,7 +154,7 @@ const topics = [
     id: 'contact',
     keywords: ['contact', 'email', 'phone', 'reach', 'hire', 'connect', 'linkedin', 'github', 'number'],
     respond: () =>
-      `You can reach her at:\n• Email: ${profile.email}\n• Phone: ${profile.phone}\n• GitHub: ${profile.github}\n• LinkedIn: ${profile.linkedin}\n• Location: ${profile.location}`
+      `You can reach her at:\n• Email: ${profile.email}\n• LinkedIn: ${profile.linkedin}`
   },
   {
     id: 'location',
@@ -162,6 +162,10 @@ const topics = [
     respond: () => `She's based in ${profile.location}.`
   }
 ]
+
+function formatProject(project) {
+  return `${project.title}: ${project.description}\nTech stack: ${project.stack}`
+}
 
 function escapeRegex(str) {
   return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
@@ -186,7 +190,7 @@ export function getBotResponse(rawInput) {
     }
   }
 
-  return { text: "I don't have specifics on that yet — please rewrite it more clearly, or ask about her skills, experience, projects, education, or contact details." }
+  return { text: "I don't have that information. Try asking about her skills, experience, projects, education, or contact details." }
 }
 
 export const suggestedQuestions = [
