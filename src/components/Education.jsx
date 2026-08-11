@@ -52,8 +52,9 @@ export default function Education() {
                 <Reveal key={edu.id} delay={idx * 120} className="education-item">
                   <div className="edu-header">
                     <div className="edu-header-main">
-                      <a href={edu.website} target="_blank" rel="noopener noreferrer" aria-label={`Visit ${edu.institution} website`}>
+                      <a href={edu.website} target="_blank" rel="noopener noreferrer" aria-label={`Visit ${edu.institution} website`} className="edu-logo-link">
                         <img src={edu.logo} alt={`${edu.institution} logo`} className="edu-logo" />
+                        <span className="edu-logo-tooltip">Click here to visit the website</span>
                       </a>
                       <div>
                         <h4>{edu.degree}</h4>

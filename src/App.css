@@ -942,6 +942,12 @@
   gap: 1rem;
 }
 
+.edu-logo-link {
+  position: relative;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
 .edu-logo {
   width: 44px;
   height: 44px;
@@ -949,6 +955,42 @@
   object-fit: cover;
   border: 1px solid var(--border);
   flex-shrink: 0;
+}
+
+.edu-logo-tooltip {
+  position: absolute;
+  bottom: calc(100% + 0.5rem);
+  left: 50%;
+  transform: translateX(-50%) translateY(4px);
+  background: var(--bg-darker);
+  color: var(--text);
+  border: 1px solid var(--border);
+  padding: 0.4rem 0.75rem;
+  border-radius: 0.375rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  z-index: 5;
+  box-shadow: var(--shadow-lg);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.edu-logo-tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: var(--bg-darker);
+}
+
+.edu-logo-link:hover .edu-logo-tooltip,
+.edu-logo-link:focus-visible .edu-logo-tooltip {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
 }
 
 .edu-header h4,
