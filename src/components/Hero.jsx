@@ -1,6 +1,23 @@
+import { useEffect, useRef, useState } from 'react'
 import HeroBackground from './HeroBackground'
 
 export default function Hero() {
+  const [resumeMenuOpen, setResumeMenuOpen] = useState(false)
+  const resumeMenuRef = useRef(null)
+
+  useEffect(() => {
+    if (!resumeMenuOpen) return
+
+    function handleClickOutside(event) {
+      if (resumeMenuRef.current && !resumeMenuRef.current.contains(event.target)) {
+        setResumeMenuOpen(false)
+      }
+    }
+
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => document.removeEventListener('mousedown', handleClickOutside)
+  }, [resumeMenuOpen])
+
   return (
     <section id="home" className="hero">
       <HeroBackground />
@@ -14,7 +31,38 @@ export default function Hero() {
         <div className="cta-buttons hero-in hero-in-5">
           <a href="#projects" className="btn btn-primary btn-shine">View My Projects</a>
           <a href="#contact" className="btn btn-secondary">Get In Touch</a>
-          <a href="/resume.pdf" className="btn btn-secondary" download>Download Resume</a>
+          <div className="resume-menu" ref={resumeMenuRef}>
+            <button
+              type="button"
+              className="btn btn-secondary"
+              aria-haspopup="true"
+              aria-expanded={resumeMenuOpen}
+              onClick={() => setResumeMenuOpen((open) => !open)}
+            >
+              Resume
+            </button>
+            {resumeMenuOpen && (
+              <div className="resume-menu-dropdown">
+                <a
+                  href="/resume.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="resume-menu-item"
+                  onClick={() => setResumeMenuOpen(false)}
+                >
+                  View Resume
+                </a>
+                <a
+                  href="/resume.pdf"
+                  download
+                  className="resume-menu-item"
+                  onClick={() => setResumeMenuOpen(false)}
+                >
+                  Download Resume
+                </a>
+              </div>
+            )}
+          </div>
         </div>
       </div>
       <a href="#experience" className="scroll-cue" aria-label="Scroll down">
