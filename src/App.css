@@ -130,6 +130,7 @@
   justify-content: center;
 }
 
+
 .nav-links a {
   font-weight: 500;
   transition: color 0.3s ease;
@@ -174,6 +175,7 @@
     width: 1.7rem;
     height: 1.7rem;
   }
+
 }
 
 /* Buttons */
