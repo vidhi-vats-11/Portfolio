@@ -1,7 +1,26 @@
+import { useEffect, useState } from 'react'
 import ScrollProgress from './ScrollProgress'
 import profilePhoto from '../assets/profile.jpg'
 
+const links = [
+  { href: '#home', label: 'Home' },
+  { href: '#experience', label: 'Experience' },
+  { href: '#projects', label: 'Projects' },
+  { href: '#skills', label: 'Skills' },
+  { href: '#education', label: 'Education' },
+  { href: '#contact', label: 'Contact' }
+]
+
 export default function Header() {
+  const [menuOpen, setMenuOpen] = useState(false)
+
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? 'hidden' : ''
+    return () => {
+      document.body.style.overflow = ''
+    }
+  }, [menuOpen])
+
   return (
     <header className="header">
       <ScrollProgress />
@@ -15,15 +34,35 @@ export default function Header() {
           />
           Vidhi Vats
         </div>
-        <ul className="nav-links">
-          <li><a href="#home"><span>Home</span></a></li>
-          <li><a href="#experience"><span>Experience</span></a></li>
-          <li><a href="#projects"><span>Projects</span></a></li>
-          <li><a href="#skills"><span>Skills</span></a></li>
-          <li><a href="#education"><span>Education</span></a></li>
-          <li><a href="#contact"><span>Contact</span></a></li>
+
+        <ul className="nav-links nav-links-desktop">
+          {links.map((link) => (
+            <li key={link.href}><a href={link.href}><span>{link.label}</span></a></li>
+          ))}
         </ul>
+
+        <button
+          type="button"
+          className={`nav-toggle${menuOpen ? ' nav-toggle-open' : ''}`}
+          aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+          aria-expanded={menuOpen}
+          onClick={() => setMenuOpen((open) => !open)}
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
       </nav>
+
+      <div className={`nav-mobile${menuOpen ? ' nav-mobile-open' : ''}`}>
+        <ul className="nav-links">
+          {links.map((link) => (
+            <li key={link.href}>
+              <a href={link.href} onClick={() => setMenuOpen(false)}><span>{link.label}</span></a>
+            </li>
+          ))}
+        </ul>
+      </div>
     </header>
   )
 }

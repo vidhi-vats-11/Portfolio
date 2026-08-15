@@ -1,104 +1,96 @@
 export default function HeroBackground() {
   return (
-    <svg
-      className="hero-background"
-      viewBox="0 0 1200 600"
-      preserveAspectRatio="xMidYMid slice"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <defs>
-        <linearGradient id="gradDark" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="rgba(129, 140, 248, 0.22)" />
-          <stop offset="100%" stopColor="rgba(129, 140, 248, 0.06)" />
-        </linearGradient>
-        <pattern id="dots" x="40" y="40" width="80" height="80" patternUnits="userSpaceOnUse">
-          <circle cx="40" cy="40" r="2" fill="rgba(129, 140, 248, 0.15)" />
-        </pattern>
-      </defs>
-
-      {/* Background gradient */}
-      <rect width="1200" height="600" fill="url(#gradDark)" />
-      <rect width="1200" height="600" fill="url(#dots)" />
-
-      {/* Animated circles and tech elements */}
-      <g className="tech-elements">
-        {/* Large circles */}
-        <circle cx="100" cy="100" r="150" fill="none" stroke="rgba(129, 140, 248, 0.18)" strokeWidth="2" className="circle-lg" />
-        <circle cx="1100" cy="500" r="200" fill="none" stroke="rgba(129, 140, 248, 0.14)" strokeWidth="2" className="circle-lg" />
-
-        {/* Connected nodes - network visualization */}
-        <circle cx="200" cy="150" r="8" fill="rgba(129, 140, 248, 0.45)" className="node" />
-        <circle cx="400" cy="200" r="8" fill="rgba(129, 140, 248, 0.45)" className="node" />
-        <circle cx="600" cy="300" r="8" fill="rgba(129, 140, 248, 0.45)" className="node" />
-        <circle cx="800" cy="250" r="8" fill="rgba(129, 140, 248, 0.45)" className="node" />
-        <circle cx="1000" cy="350" r="8" fill="rgba(129, 140, 248, 0.45)" className="node" />
-
-        {/* Connection lines */}
-        <line x1="200" y1="150" x2="400" y2="200" stroke="rgba(129, 140, 248, 0.25)" strokeWidth="2" />
-        <line x1="400" y1="200" x2="600" y2="300" stroke="rgba(129, 140, 248, 0.25)" strokeWidth="2" />
-        <line x1="600" y1="300" x2="800" y2="250" stroke="rgba(129, 140, 248, 0.25)" strokeWidth="2" />
-        <line x1="800" y1="250" x2="1000" y2="350" stroke="rgba(129, 140, 248, 0.25)" strokeWidth="2" />
-        <line x1="600" y1="300" x2="200" y2="150" stroke="rgba(129, 140, 248, 0.15)" strokeWidth="1" strokeDasharray="5,5" />
-
-        {/* Code/Data visualization elements */}
-        <g opacity="0.18">
-          <text x="50" y="500" fontSize="12" fill="rgba(129, 140, 248, 0.7)" fontFamily="monospace">
-            &lt;algorithm&gt;
-          </text>
-          <text x="1000" y="150" fontSize="12" fill="rgba(129, 140, 248, 0.7)" fontFamily="monospace">
-            $ build_system()
-          </text>
-          <text x="100" y="450" fontSize="12" fill="rgba(129, 140, 248, 0.7)" fontFamily="monospace">
-            [ data flow ]
-          </text>
-        </g>
-
-        {/* Small decorative elements */}
-        <rect x="150" y="500" width="60" height="60" fill="none" stroke="rgba(129, 140, 248, 0.22)" strokeWidth="2" rx="5" className="square" />
-        <rect x="950" y="100" width="80" height="80" fill="none" stroke="rgba(129, 140, 248, 0.22)" strokeWidth="2" rx="5" className="square" />
-
-        {/* Floating nodes */}
-        <circle cx="300" cy="450" r="6" fill="rgba(129, 140, 248, 0.35)" className="float-node" />
-        <circle cx="900" cy="450" r="6" fill="rgba(129, 140, 248, 0.35)" className="float-node" />
-      </g>
-
+    <div className="hero-background hero-blobs" aria-hidden="true">
+      <span className="hero-blob hero-blob-1" />
+      <span className="hero-blob hero-blob-2" />
+      <span className="hero-blob hero-blob-3" />
+      <span className="hero-sparkle hero-sparkle-1">✦</span>
+      <span className="hero-sparkle hero-sparkle-2">✦</span>
+      <span className="hero-sparkle hero-sparkle-3">✧</span>
       <style>{`
-        .circle-lg {
-          animation: pulse 4s ease-in-out infinite;
+        .hero-blobs {
+          overflow: hidden;
         }
 
-        .node {
-          animation: glow 3s ease-in-out infinite;
+        .hero-blob {
+          position: absolute;
+          border-radius: 50%;
+          filter: blur(70px);
+          opacity: 0.55;
+          will-change: transform;
         }
 
-        .float-node {
-          animation: float 4s ease-in-out infinite;
+        .hero-blob-1 {
+          width: 480px;
+          height: 480px;
+          top: -160px;
+          left: -120px;
+          background: radial-gradient(circle at 30% 30%, rgba(244, 63, 142, 0.55), transparent 70%);
+          animation: blobDrift1 16s ease-in-out infinite;
         }
 
-        .square {
-          animation: rotate-slow 8s linear infinite;
+        .hero-blob-2 {
+          width: 420px;
+          height: 420px;
+          bottom: -140px;
+          right: -100px;
+          background: radial-gradient(circle at 60% 40%, rgba(255, 181, 69, 0.45), transparent 70%);
+          animation: blobDrift2 20s ease-in-out infinite;
         }
 
-        @keyframes pulse {
-          0%, 100% { r: 140; opacity: 0.1; }
-          50% { r: 160; opacity: 0.15; }
+        .hero-blob-3 {
+          width: 340px;
+          height: 340px;
+          top: 40%;
+          left: 50%;
+          background: radial-gradient(circle at 50% 50%, rgba(255, 143, 192, 0.35), transparent 70%);
+          animation: blobDrift3 18s ease-in-out infinite;
         }
 
-        @keyframes glow {
-          0%, 100% { r: 8; opacity: 0.3; }
-          50% { r: 12; opacity: 0.5; }
+        @keyframes blobDrift1 {
+          0%, 100% { transform: translate(0, 0) scale(1); }
+          50% { transform: translate(40px, 30px) scale(1.08); }
         }
 
-        @keyframes float {
-          0%, 100% { transform: translateY(0px); opacity: 0.2; }
-          50% { transform: translateY(-20px); opacity: 0.4; }
+        @keyframes blobDrift2 {
+          0%, 100% { transform: translate(0, 0) scale(1); }
+          50% { transform: translate(-30px, -40px) scale(1.1); }
         }
 
-        @keyframes rotate-slow {
-          from { transform: rotate(0deg); }
-          to { transform: rotate(360deg); }
+        @keyframes blobDrift3 {
+          0%, 100% { transform: translate(-50%, 0) scale(1); }
+          50% { transform: translate(-50%, -25px) scale(0.92); }
+        }
+
+        .hero-sparkle {
+          position: absolute;
+          color: rgba(255, 212, 121, 0.7);
+          font-size: 1.1rem;
+          animation: sparkleTwinkle 3.4s ease-in-out infinite;
+        }
+
+        .hero-sparkle-1 { top: 18%; left: 12%; font-size: 1.4rem; animation-delay: 0s; }
+        .hero-sparkle-2 { top: 28%; right: 14%; animation-delay: 1.1s; color: rgba(244, 63, 142, 0.6); }
+        .hero-sparkle-3 { bottom: 22%; left: 20%; font-size: 0.9rem; animation-delay: 2s; }
+
+        @keyframes sparkleTwinkle {
+          0%, 100% { opacity: 0.25; transform: scale(0.85) rotate(0deg); }
+          50% { opacity: 0.9; transform: scale(1.15) rotate(12deg); }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          .hero-blob, .hero-sparkle {
+            animation: none;
+          }
+        }
+
+        @media (max-width: 640px) {
+          .hero-blob-1 { width: 300px; height: 300px; top: -100px; left: -80px; }
+          .hero-blob-2 { width: 260px; height: 260px; bottom: -90px; right: -70px; }
+          .hero-blob-3 { width: 220px; height: 220px; }
+          .hero-sparkle { display: none; }
         }
       `}</style>
-    </svg>
+    </div>
   )
 }
