@@ -4,24 +4,33 @@ import SectionBackground from './SectionBackground'
 const projects = [
   {
     id: 1,
-    title: 'GenAI RAG Document Assistant',
-    description: 'Built a Retrieval-Augmented Generation chatbot that answers natural-language questions over a custom document corpus. Designed an ingestion pipeline that chunks documents, generates embeddings, and indexes them in a vector store for fast semantic retrieval. Implemented context-aware query handling with low-hallucination answers and source citations. Containerized with Docker and automated CI/CD with GitHub Actions.',
-    tags: ['Python', 'LangChain', 'OpenAI', 'Vector Stores', 'Docker', 'CI/CD', 'Firebase'],
-    link: 'https://github.com/vidhi-vats-11'
+    title: 'Thrift Vault — Production E-Commerce Platform',
+    description: 'Designed and built a full e-commerce platform end to end. A 14-table PostgreSQL schema in Prisma backs a modular Express API across 9 domains, with JWT access/refresh authentication, bcrypt hashing, Zod request validation, Helmet hardening and Redis-backed rate limiting. Because every item is one-of-one, checkout reserves stock and a scheduled job releases inventory from expired orders so nothing can be oversold. Payments sit behind a gateway interface, so a live provider drops in without touching order logic.',
+    tags: ['Node.js', 'Express', 'Prisma', 'PostgreSQL', 'Redis', 'JWT', 'React', 'Vercel'],
+    link: 'https://github.com/vidhi-vats-11/thrift-vault',
+    live: 'https://thriftvaultstore.vercel.app'
   },
   {
     id: 2,
     title: 'Real-Time Monitoring Dashboard',
-    description: 'Built an enterprise-grade real-time monitoring dashboard in React.js for a 12-node distributed sensor network. Designed scalable backend services with Django + MongoDB to ingest and process high-frequency data streams. Introduced Redis caching and RabbitMQ message queue to decouple ingestion from processing. Deployed on GCP with Docker for scalability.',
+    description: 'Built an enterprise-grade real-time monitoring dashboard in React.js for a 12-node distributed sensor network. Designed scalable backend services with Django + MongoDB to ingest and process high-frequency data streams. Introduced Redis caching and a RabbitMQ message queue to decouple ingestion from processing, and delivered live updates over WebSockets. Deployed on GCP with Docker.',
     tags: ['React.js', 'Django', 'MongoDB', 'Redis', 'RabbitMQ', 'GCP', 'Docker', 'WebSocket'],
-    link: 'https://github.com/vidhi-vats-11'
+    note: 'Built during my internship at Data Sailors — source code is proprietary.'
   },
   {
     id: 3,
-    title: 'Network Vulnerability Scanner',
-    description: 'Built a full-stack security tool in React + Django to scan and analyze network vulnerabilities with real-time device discovery and scanning. Simulated real-world attacks (MITM, ARP spoofing, packet sniffing) and built Python brute-force modules for SSH/Telnet security testing. Optimized packet processing for real-time vulnerability detection.',
-    tags: ['React', 'Django', 'Python', 'Network Security', 'Real-Time'],
-    link: 'https://github.com/vidhi-vats-11'
+    title: 'GenAI RAG Document Assistant',
+    description: 'Built a Retrieval-Augmented Generation assistant answering natural-language questions over an internal document corpus. Designed the ingestion pipeline that chunks documents, generates embeddings and indexes them in a vector store for fast semantic retrieval, with source citations to keep answers grounded. Containerized with Docker and automated build and deploy through GitHub Actions.',
+    tags: ['Python', 'LangChain', 'OpenAI', 'Vector Stores', 'Docker', 'CI/CD'],
+    note: 'Built during my internship at Data Sailors — source code is proprietary.'
+  },
+  {
+    id: 4,
+    title: 'Personal Portfolio',
+    description: 'This site. A responsive React + Vite portfolio with an EmailJS-powered contact form and an interactive resume chatbot, deployed through a GitHub to Vercel CI/CD pipeline with environment-based secret management.',
+    tags: ['React', 'Vite', 'JavaScript', 'EmailJS', 'Vercel'],
+    link: 'https://github.com/vidhi-vats-11/Portfolio',
+    live: 'https://vidhivats-portfolio.vercel.app'
   }
 ]
 
@@ -41,7 +50,19 @@ export default function Projects() {
                   <span key={tag} className="tag">{tag}</span>
                 ))}
               </div>
-              <a href={project.link} className="project-link">View Project →</a>
+              <div className="project-links">
+                {project.live && (
+                  <a href={project.live} target="_blank" rel="noreferrer" className="project-link">
+                    Live demo →
+                  </a>
+                )}
+                {project.link && (
+                  <a href={project.link} target="_blank" rel="noreferrer" className="project-link">
+                    View code →
+                  </a>
+                )}
+                {project.note && <span className="project-note">{project.note}</span>}
+              </div>
             </Reveal>
           ))}
         </div>

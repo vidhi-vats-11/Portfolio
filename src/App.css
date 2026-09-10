@@ -702,6 +702,20 @@
   transform: translateX(6px);
 }
 
+.project-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.25rem;
+  margin-top: 0.75rem;
+}
+
+.project-note {
+  font-size: 0.85rem;
+  opacity: 0.65;
+  font-style: italic;
+}
+
 /* Skills Section */
 .skills {
   position: relative;
