@@ -34,6 +34,13 @@ const certifications = [
     instructors: 'Hitesh Choudhary & Piyush Garg',
     topics: 'LLMs, AI agents, RAG, and automation pipelines with hands-on projects',
     url: 'https://www.udemy.com/certificate/UC-848d0f89-ec98-474e-8886-acc5b7690c36/'
+  },
+  {
+    id: 2,
+    title: 'AI/ML for Geodata Analytics',
+    issuer: 'IIRS, ISRO — Dept. of Space, Govt. of India',
+    topics: 'Python for data science, supervised/unsupervised ML, and CNNs applied to satellite imagery (10-hour online program, Aug 2026)',
+    url: 'https://isrolms.iirs.gov.in/mod/customcert/verify_certificate.php?code=FQvNQKEUd9'
   }
 ]
 
@@ -77,7 +84,7 @@ export default function Education() {
                 <Reveal key={cert.id} delay={100 + idx * 120} className="certification-item">
                   <h4>{cert.title}</h4>
                   <p className="issuer">{cert.issuer}</p>
-                  <p className="instructors">Instructors: {cert.instructors}</p>
+                  {cert.instructors && <p className="instructors">Instructors: {cert.instructors}</p>}
                   <p className="topics">{cert.topics}</p>
                   <a href={cert.url} target="_blank" rel="noopener noreferrer" className="btn btn-secondary cert-btn">View Certificate</a>
                 </Reveal>

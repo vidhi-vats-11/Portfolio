@@ -70,6 +70,11 @@ const profile = {
       title: 'Full Stack Generative & Agentic AI with Python',
       issuer: 'Udemy (Hitesh Choudhary & Piyush Garg)',
       topics: 'LLMs, AI agents, RAG, and automation pipelines with hands-on projects'
+    },
+    {
+      title: 'AI/ML for Geodata Analytics',
+      issuer: 'IIRS, ISRO — Dept. of Space, Govt. of India',
+      topics: 'Python for data science, supervised/unsupervised ML, and CNNs applied to satellite imagery (10-hour online program, Aug 2026)'
     }
   ],
   personal: {
