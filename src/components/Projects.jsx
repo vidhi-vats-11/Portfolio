@@ -6,8 +6,8 @@ const projects = [
     id: 1,
     title: 'Thrift Vault — Production E-Commerce Platform',
     description: 'Designed and built a full e-commerce platform end to end. A 14-table PostgreSQL schema in Prisma backs a modular Express API across 9 domains, with JWT access/refresh authentication, bcrypt hashing, Zod request validation, Helmet hardening and Redis-backed rate limiting. Because every item is one-of-one, checkout reserves stock and a scheduled job releases inventory from expired orders so nothing can be oversold. Payments sit behind a gateway interface, so a live provider drops in without touching order logic.',
-    tags: ['Node.js', 'Express', 'Prisma', 'PostgreSQL', 'Redis', 'JWT', 'React', 'Vercel'],
-    link: 'https://github.com/vidhi-vats-11/thrift-vault',
+    tags: ['PostgreSQL', 'Prisma', 'Redis', 'JWT', 'Docker', 'Node.js', 'Express', 'React'],
+    link: 'https://github.com/vidhi-vats-11/thrift-vault-backend',
     live: 'https://thriftvaultstore.vercel.app'
   },
   {
