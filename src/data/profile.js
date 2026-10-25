@@ -1,21 +1,21 @@
 const profile = {
   name: 'Vidhi Vats',
-  title: 'Backend Engineer | Python · Django · PostgreSQL · Redis',
+  title: 'Software Development Engineer | Backend & Full-Stack | AI-Powered Systems',
   location: 'Meerut, Uttar Pradesh, India',
   email: 'vidhii.vats@gmail.com',
   phone: '+91 9906843553',
   github: 'https://github.com/vidhi-vats-11',
   linkedin: 'https://linkedin.com/in/vidhivats-',
   summary:
-    "Vidhi is a Python backend engineer. During a 9-month internship at Data Sailors she built Django + MongoDB services for a real-time IoT data platform, with RabbitMQ, Redis and WebSockets, deployed on GCP with Docker. She also built Thrift Vault, an e-commerce platform on PostgreSQL. She is pursuing an M.Tech in CSE at IIT Patna and is looking for backend / software engineering roles.",
+    "Vidhi is a Software Development Engineer skilled in building scalable, real-time distributed systems with React, Django, and Node.js on GCP/AWS. She has hands-on experience with high-throughput data pipelines using Redis and RabbitMQ, and AI-powered applications built on LangChain, RAG, and vector search. She's focused on clean backend architecture and shipping reliable products.",
   skills: {
-    Languages: ['Python', 'C++', 'C', 'SQL', 'JavaScript'],
-    Backend: ['Django', 'Flask', 'REST APIs', 'WebSockets', 'JWT Auth', 'Node.js / Express'],
-    Frontend: ['React.js', 'HTML', 'CSS', 'Tailwind CSS'],
+    Languages: ['Python', 'C++', 'JavaScript', 'TypeScript'],
+    Backend: ['Django', 'Node.js', 'Express.js', 'Nest.js', 'Flask', 'REST APIs'],
+    Frontend: ['React.js', 'HTML', 'CSS', 'Tailwind CSS', 'Material-UI'],
     'AI / LLM': ['LangChain', 'OpenAI APIs', 'RAG', 'Embeddings', 'Vector Stores', 'AI Agents', 'Prompt Engineering'],
-    'Databases & Messaging': ['PostgreSQL', 'MySQL', 'MongoDB', 'Redis', 'RabbitMQ'],
-    'Cloud & DevOps': ['Docker', 'GCP', 'Linux', 'Git', 'GitHub Actions', 'Postman'],
-    'Core Concepts': ['Data Structures & Algorithms', 'DBMS', 'Operating Systems', 'Computer Networks', 'OOP']
+    'Databases & Messaging': ['MongoDB', 'PostgreSQL', 'MySQL', 'Redis', 'RabbitMQ'],
+    'Cloud & DevOps': ['GCP', 'AWS', 'Docker', 'Firebase', 'GitHub Actions', 'CI/CD'],
+    'Core Concepts': ['Data Structures & Algorithms', 'OOP', 'Microservices', 'System Design', 'Distributed Systems']
   },
   experience: [
     {

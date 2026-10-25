@@ -26,8 +26,8 @@ export default function Hero() {
         <h1 className="hero-in hero-in-2">
           <span className="gradient-text">Vidhi Vats</span>
         </h1>
-        <p className="role hero-in hero-in-3">Backend Engineer | Python · Django · PostgreSQL | Available Immediately</p>
-        <p className="subtitle hero-in hero-in-4">I build backends in Python and Django — REST APIs, PostgreSQL, Redis caching and RabbitMQ queues. Open to full-time and internship roles.</p>
+        <p className="role hero-in hero-in-3">Software Engineer | Backend &amp; Full-Stack | Available Immediately</p>
+        <p className="subtitle hero-in hero-in-4">I build backends that hold up in production — Node.js, Express, Python and Django, with PostgreSQL, Redis and RabbitMQ behind them. Open to full-time and internship roles.</p>
         <div className="cta-buttons hero-in hero-in-5">
           <a href="#projects" className="btn btn-primary btn-shine">View My Projects</a>
           <a href="#contact" className="btn btn-secondary">Get In Touch</a>
